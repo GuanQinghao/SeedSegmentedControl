@@ -47,10 +47,10 @@
 
 #pragma mark -
 
-/// ContentView代理中调用的方法
-/// @param progress <#progress description#>
-/// @param originalIndex <#originalIndex description#>
-/// @param targetIndex <#targetIndex description#>
+/// GQHSegmentedContentView的代理中需要调用的方法
+/// @param progress 分页内容切换进度
+/// @param originalIndex 初始索引值
+/// @param targetIndex 目标索引值
 - (void)qh_setSegmentedTitleViewWithProgress:(CGFloat)progress originalIndex:(NSInteger)originalIndex targetIndex:(NSInteger)targetIndex {
     
     // originalButton和targetButton
@@ -75,37 +75,36 @@
     if (_qh_configure.qh_showIndicator) {
         
         if (_totalWidth <= CGRectGetWidth(self.bounds)) {
-            // 静止
+            // 固定样式
             
             if (_qh_configure.qh_isEquivalent) {
                 
                 if (_qh_configure.qh_indicatorScrollStyle == GQHSegmentedViewIndicatorStyleDefault) {
                     
-#warning to-do:方法
+                    [self fixedTitleViewWithFollowedIndicatorByProgress:progress originalButton:originalButton targetButton:targetButton];
                 } else {
                     
-#warning to-do:方法
+                    [self fixedTitleViewWithPostponedIndicatorByProgress:progress originalButton:originalButton targetButton:targetButton];
                 }
             } else {
                 
                 if (_qh_configure.qh_indicatorScrollStyle == GQHSegmentedViewIndicatorStyleDefault) {
                     
-#warning to-do:方法
+                    [self mutativeTitleViewWithFollowedIndicatorByProgress:progress originalButton:originalButton targetButton:targetButton];
                 } else {
                     
-#warning to-do:方法
+                    [self mutativeTitleViewWithPostponedIndicatorByProgress:progress originalButton:originalButton targetButton:targetButton];
                 }
             }
-            
         } else {
             // 可滚动
             
             if (_qh_configure.qh_indicatorScrollStyle == GQHSegmentedViewIndicatorStyleDefault) {
                 
-#warning to-do:方法
+                [self mutativeTitleViewWithFollowedIndicatorByProgress:progress originalButton:originalButton targetButton:targetButton];
             } else {
                 
-#warning to-do:方法
+                [self mutativeTitleViewWithPostponedIndicatorByProgress:progress originalButton:originalButton targetButton:targetButton];
             }
         }
     }
@@ -125,12 +124,173 @@
             CGFloat originalFactor = 1 + (1- progress) * _qh_configure.qh_titleScaleFactor;
             originalButton.transform =CGAffineTransformMakeScale(originalFactor, originalFactor);
             
-            //
+            // originalButton缩放
             CGFloat targetFactor = 1 + progress * _qh_configure.qh_titleScaleFactor;
             targetButton.transform = CGAffineTransformMakeScale(targetFactor, targetFactor);
         }
     }
 }
+
+/// 固定样式跟随滚动指示器
+/// @param progress 分页内容切换进度
+/// @param originalButton 初始标题按钮
+/// @param targetButton 目标标题按钮
+- (void)fixedTitleViewWithFollowedIndicatorByProgress:(CGFloat)progress originalButton:(UIButton *)originalButton targetButton:(UIButton *)targetButton {
+    
+    // 改变按钮状态
+    if (progress >= 0.8f) {
+        
+        // 此处取 >= 0.8 而不是 1.0 为的是防止用户滚动过快而按钮的选中状态并没有改变
+        [self switchButtonState:targetButton];
+    }
+    
+    // 处理指示器
+    // 按钮宽度
+    CGFloat buttonWidth = CGRectGetWidth(_scrollView.frame) / _qh_titleArray.count;
+    // 目标按钮最大X值
+    CGFloat targetButtonMaxX = (targetButton.tag + 1) * buttonWidth;
+    // 初始按钮最大X值
+    CGFloat originalButtonMaxX = (originalButton.tag + 1) * buttonWidth;
+    
+    switch (_qh_configure.qh_indicatorStyle) {
+            
+        case GQHSegmentedViewIndicatorStyleDefault:
+        case GQHSegmentedViewIndicatorStyleCover: {
+            // 下划线样式、遮盖样式
+            
+            // 文字宽度
+            CGFloat targetTextWidth = [self sizeWithString:targetButton.currentTitle font:_qh_configure.qh_titleDefaultFont].width;
+            CGFloat originalTextWidth = [self sizeWithString:originalButton.currentTitle font:_qh_configure.qh_titleDefaultFont].width;
+            
+            CGFloat targetIndicatorX = targetButtonMaxX - targetTextWidth - 0.5f * (buttonWidth - targetTextWidth + _qh_configure.qh_indicatorSpacing);
+            CGFloat originalIndicatorX = originalButtonMaxX - originalTextWidth - 0.5f * (buttonWidth - originalTextWidth + _qh_configure.qh_indicatorSpacing);
+            // 总偏移量
+            CGFloat totalOffset = targetIndicatorX - originalIndicatorX;
+            
+            // 计算文字之间差值
+            // targetButton 文字右边的X值
+            CGFloat targetButtonTextRightX = targetButtonMaxX - 0.5f * (buttonWidth - targetTextWidth);
+            // originalButton 文字右边的X值
+            CGFloat originalButtonTextRightX = originalButtonMaxX - 0.5f * (buttonWidth - originalTextWidth);
+            CGFloat textDistance = targetButtonTextRightX - originalButtonTextRightX;
+            
+            // 计算滚动时的偏移量
+            CGFloat offset = totalOffset * progress;
+            // 计算滚动时文字宽度的差值
+            CGFloat diff = progress * (textDistance - totalOffset);
+            
+            // 计算指示器新的frame
+            CGRect frame = _indicator.frame;
+            frame.origin.x = originalIndicatorX + offset;
+            _indicator.frame = frame;
+            
+            CGFloat indicatorWidth = _qh_configure.qh_indicatorSpacing + originalTextWidth + diff;
+            if (indicatorWidth >= CGRectGetWidth(targetButton.frame)) {
+                
+                CGFloat x = progress * (targetButton.frame.origin.x - originalButton.frame.origin.x);
+                CGPoint center = _indicator.center;
+                center.x = originalButton.center.x + x;
+                _indicator.center = center;
+            } else {
+                
+                CGRect frame = _indicator.frame;
+                frame.size.width = indicatorWidth;
+                _indicator.frame = frame;
+            }
+        }
+            break;
+        case GQHSegmentedViewIndicatorStyleFixed: {
+            // 固定样式
+            
+            CGFloat targetIndicatorX = targetButtonMaxX - 0.5f * (buttonWidth - _qh_configure.qh_indicatorFixedWidth) - _qh_configure.qh_indicatorFixedWidth;
+            
+            CGFloat originalIndicatorX = originalButtonMaxX - 0.5f * (buttonWidth - _qh_configure.qh_indicatorFixedWidth) - _qh_configure.qh_indicatorFixedWidth;
+            
+            CGFloat offset = targetIndicatorX - originalIndicatorX;
+            
+            CGRect frame = _indicator.frame;
+            frame.origin.x = originalIndicatorX + progress * offset;
+            _indicator.frame = frame;
+        }
+            break;
+            
+        case GQHSegmentedViewIndicatorStyleDynamic: {
+            // 动态样式
+            
+            if (originalButton.tag <= targetButton.tag) {
+                
+                // 往左滑
+                if (progress <= 0.5f) {
+                    
+                    CGRect frame = _indicator.frame;
+                    frame.size.width = _qh_configure.qh_indicatorDynamicWidth + 2 * progress * buttonWidth;
+                    _indicator.frame = frame;
+                } else {
+                    
+                    CGFloat targetIndicatorX = targetButtonMaxX - 0.5f * (buttonWidth - _qh_configure.qh_indicatorDynamicWidth) - _qh_configure.qh_indicatorDynamicWidth;
+                    
+                    CGRect frame = _indicator.frame;
+                    frame.origin.x = targetIndicatorX + 2 * (progress -1) * buttonWidth;
+                    frame.size.width = _qh_configure.qh_indicatorDynamicWidth + 2 * (1 - progress) * buttonWidth;
+                    _indicator.frame = frame;
+                }
+            } else {
+                
+                // 往右滑
+                if (progress <= 0.5f) {
+                    
+                    CGFloat originalIndicatorX = originalButtonMaxX - 0.5f * (buttonWidth - _qh_configure.qh_indicatorDynamicWidth) - _qh_configure.qh_indicatorDynamicWidth;
+                    
+                    CGRect frame = _indicator.frame;
+                    frame.origin.x = originalIndicatorX - 2 * progress * buttonWidth;
+                    frame.size.width = _qh_configure.qh_indicatorDynamicWidth + 2 * progress * buttonWidth;
+                    _indicator.frame = frame;
+                } else {
+                    
+                    CGFloat targetIndicatorX = targetButtonMaxX - 0.5f * (buttonWidth - _qh_configure.qh_indicatorDynamicWidth) - _qh_configure.qh_indicatorDynamicWidth;
+                    
+                    CGRect frame = _indicator.frame;
+                    frame.origin.x = targetIndicatorX;
+                    frame.size.width = _qh_configure.qh_indicatorDynamicWidth + 2 * (1 - progress) * buttonWidth;
+                    _indicator.frame = frame;
+                }
+            }
+        }
+            break;
+    }
+}
+
+/// 固定样式延后滚动指示器
+/// @param progress 分页内容切换进度
+/// @param originalButton 初始标题按钮
+/// @param targetButton 目标标题按钮
+- (void)fixedTitleViewWithPostponedIndicatorByProgress:(CGFloat)progress originalButton:(UIButton *)originalButton targetButton:(UIButton *)targetButton {
+    
+}
+
+/// 动态样式跟随滚动指示器
+/// @param progress 分页内容切换进度
+/// @param originalButton 初始标题按钮
+/// @param targetButton 目标标题按钮
+- (void)mutativeTitleViewWithFollowedIndicatorByProgress:(CGFloat)progress originalButton:(UIButton *)originalButton targetButton:(UIButton *)targetButton {
+    
+}
+
+/// 动态样式延后滚动指示器
+/// @param progress 分页内容切换进度
+/// @param originalButton 初始标题按钮
+/// @param targetButton 目标标题按钮
+- (void)mutativeTitleViewWithPostponedIndicatorByProgress:(CGFloat)progress originalButton:(UIButton *)originalButton targetButton:(UIButton *)targetButton {
+    
+}
+
+
+
+
+
+
+
+
 
 #pragma mark - LifeCycle
 - (instancetype)initWithFrame:(CGRect)frame {

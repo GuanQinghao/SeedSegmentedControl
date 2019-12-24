@@ -54,10 +54,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// 选中的下标
 @property (nonatomic, assign) NSInteger qh_selectedIndex;
 
-/// ContentView代理中调用的方法
-/// @param progress <#progress description#>
-/// @param originalIndex <#originalIndex description#>
-/// @param targetIndex <#targetIndex description#>
+/// GQHSegmentedContentView的代理中需要调用的方法
+/// @param progress 分页内容切换进度
+/// @param originalIndex 初始索引值
+/// @param targetIndex 目标索引值
 - (void)qh_setSegmentedTitleViewWithProgress:(CGFloat)progress originalIndex:(NSInteger)originalIndex targetIndex:(NSInteger)targetIndex;
 
 
