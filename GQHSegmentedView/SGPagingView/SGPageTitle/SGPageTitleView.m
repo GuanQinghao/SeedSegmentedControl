@@ -832,6 +832,8 @@
 
 #pragma mark - - - SGPageTitleView 滚动样式下指示器默认滚动样式（SGIndicatorScrollStyleDefault）
 - (void)P_indicatorScrollStyleDefaultWithProgress:(CGFloat)progress originalBtn:(UIButton *)originalBtn targetBtn:(UIButton *)targetBtn {
+    
+    
     /// 改变按钮的选择状态
     if (progress >= 0.8) { /// 此处取 >= 0.8 而不是 1.0 为的是防止用户滚动过快而按钮的选中状态并没有改变
         [self P_changeSelectedButton:targetBtn];
@@ -890,15 +892,22 @@
         CGFloat offsetCX = 0.0;
         
         CGFloat tempIndicatorWidth = self.configure.indicatorAdditionalWidth + targetBtnTextWidth + self.configure.titleTextZoomRatio * targetBtnTextWidth;
+        
         if (tempIndicatorWidth >= targetBtn.SG_width) {
             offsetCX = distanceCenter * progress;
+            
             _indicatorView.SG_centerX = originalBtn.SG_centerX + offsetCX;
+            
             CGFloat tempIndicatorW = originalBtnTextWidth + diffText * progress;
+            
             _indicatorView.SG_width = targetBtn.SG_width - self.configure.titleTextZoomRatio * tempIndicatorW;
         } else {
             offsetCX = distanceCenter * progress;
+            
             _indicatorView.SG_centerX = originalBtn.SG_centerX + offsetCX;
+            
             CGFloat tempIndicatorW = originalBtnTextWidth + diffText * progress;
+            
             _indicatorView.SG_width = tempIndicatorW + self.configure.titleTextZoomRatio * tempIndicatorW + self.configure.indicatorAdditionalWidth;
         }
         return;
@@ -932,6 +941,8 @@
 
 #pragma mark - - - SGPageTitleView 静止样式下指示器 SGIndicatorScrollStyleHalf 和 SGIndicatorScrollStyleEnd 滚动样式
 - (void)P_staticIndicatorScrollStyleHalfEndWithProgress:(CGFloat)progress originalBtn:(UIButton *)originalBtn targetBtn:(UIButton *)targetBtn {
+    
+    
     /// 1、处理 SGIndicatorScrollStyleHalf 逻辑
     if (self.configure.indicatorScrollStyle == SGIndicatorScrollStyleHalf) {
         // 1、处理 SGIndicatorStyleFixed 样式
@@ -1014,6 +1025,7 @@
     } else {
         CGSize tempSize = [self P_sizeWithString:originalBtn.currentTitle font:self.configure.titleFont];
         CGFloat tempIndicatorWidth = self.configure.indicatorAdditionalWidth + tempSize.width;
+        
         [UIView animateWithDuration:self.configure.indicatorAnimationTime animations:^{
             if (tempIndicatorWidth >= targetBtn.SG_width) {
                 self.indicatorView.SG_width = originalBtn.SG_width;

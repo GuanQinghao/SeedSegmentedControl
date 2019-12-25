@@ -14,9 +14,6 @@
 		0445C19823B0B37300C9D326 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0445C19723B0B37300C9D326 /* Assets.xcassets */; };
 		0445C19B23B0B37300C9D326 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0445C19923B0B37300C9D326 /* LaunchScreen.storyboard */; };
 		0445C19E23B0B37300C9D326 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445C19D23B0B37300C9D326 /* main.m */; };
-		0445C1AB23B0B5AE00C9D326 /* QHSegmentContentScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445C1A523B0B5AE00C9D326 /* QHSegmentContentScrollView.m */; };
-		0445C1AC23B0B5AE00C9D326 /* QHSegmentTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445C1A723B0B5AE00C9D326 /* QHSegmentTitleView.m */; };
-		0445C1AD23B0B5AE00C9D326 /* QHSegmentContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445C1A823B0B5AE00C9D326 /* QHSegmentContentView.m */; };
 		0445C1C223B0B8EA00C9D326 /* UIButton+SGPagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445C1B223B0B8EA00C9D326 /* UIButton+SGPagingView.m */; };
 		0445C1C323B0B8EA00C9D326 /* UIView+SGPagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445C1B323B0B8EA00C9D326 /* UIView+SGPagingView.m */; };
 		0445C1C523B0B8EA00C9D326 /* SGPageContentCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0445C1B823B0B8EA00C9D326 /* SGPageContentCollectionView.m */; };
@@ -41,12 +38,6 @@
 		0445C19A23B0B37300C9D326 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0445C19C23B0B37300C9D326 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0445C19D23B0B37300C9D326 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		0445C1A523B0B5AE00C9D326 /* QHSegmentContentScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHSegmentContentScrollView.m; sourceTree = "<group>"; };
-		0445C1A623B0B5AE00C9D326 /* QHSegmentContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHSegmentContentView.h; sourceTree = "<group>"; };
-		0445C1A723B0B5AE00C9D326 /* QHSegmentTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHSegmentTitleView.m; sourceTree = "<group>"; };
-		0445C1A823B0B5AE00C9D326 /* QHSegmentContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QHSegmentContentView.m; sourceTree = "<group>"; };
-		0445C1A923B0B5AE00C9D326 /* QHSegmentContentScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHSegmentContentScrollView.h; sourceTree = "<group>"; };
-		0445C1AA23B0B5AE00C9D326 /* QHSegmentTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QHSegmentTitleView.h; sourceTree = "<group>"; };
 		0445C1B023B0B8EA00C9D326 /* UIButton+SGPagingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+SGPagingView.h"; sourceTree = "<group>"; };
 		0445C1B123B0B8EA00C9D326 /* UIView+SGPagingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SGPagingView.h"; sourceTree = "<group>"; };
 		0445C1B223B0B8EA00C9D326 /* UIButton+SGPagingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+SGPagingView.m"; sourceTree = "<group>"; };
@@ -62,6 +53,7 @@
 		0445C1C123B0B8EA00C9D326 /* SGPagingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPagingView.h; sourceTree = "<group>"; };
 		0445C1C923B0BA8700C9D326 /* GQHSegmentedContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GQHSegmentedContentView.h; sourceTree = "<group>"; };
 		0445C1CA23B0BA8700C9D326 /* GQHSegmentedContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GQHSegmentedContentView.m; sourceTree = "<group>"; };
+		0473AC0A23B31DE70093D95B /* GQHSegmentedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GQHSegmentedView.h; sourceTree = "<group>"; };
 		04C46E2F23B1A31600E06BED /* GQHSegmentedTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GQHSegmentedTitleView.h; sourceTree = "<group>"; };
 		04C46E3023B1A31600E06BED /* GQHSegmentedTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GQHSegmentedTitleView.m; sourceTree = "<group>"; };
 		04C46E3223B1A46100E06BED /* GQHSegmentedTitleViewConfigure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GQHSegmentedTitleViewConfigure.h; sourceTree = "<group>"; };
@@ -104,14 +96,8 @@
 				0445C18F23B0B36B00C9D326 /* SceneDelegate.m */,
 				0445C19123B0B36B00C9D326 /* ViewController.h */,
 				0445C19223B0B36B00C9D326 /* ViewController.m */,
-				0445C1C923B0BA8700C9D326 /* GQHSegmentedContentView.h */,
-				0445C1CA23B0BA8700C9D326 /* GQHSegmentedContentView.m */,
-				04C46E3223B1A46100E06BED /* GQHSegmentedTitleViewConfigure.h */,
-				04C46E3323B1A46100E06BED /* GQHSegmentedTitleViewConfigure.m */,
-				04C46E2F23B1A31600E06BED /* GQHSegmentedTitleView.h */,
-				04C46E3023B1A31600E06BED /* GQHSegmentedTitleView.m */,
+				0473AC0923B31DC10093D95B /* GQHSegmentedView */,
 				0445C1AE23B0B8EA00C9D326 /* SGPagingView */,
-				0445C1A423B0B5AE00C9D326 /* SegmentView */,
 				0445C19423B0B36B00C9D326 /* Main.storyboard */,
 				0445C19723B0B37300C9D326 /* Assets.xcassets */,
 				0445C19923B0B37300C9D326 /* LaunchScreen.storyboard */,
@@ -119,19 +105,6 @@
 				0445C19D23B0B37300C9D326 /* main.m */,
 			);
 			path = GQHSegmentedView;
-			sourceTree = "<group>";
-		};
-		0445C1A423B0B5AE00C9D326 /* SegmentView */ = {
-			isa = PBXGroup;
-			children = (
-				0445C1A923B0B5AE00C9D326 /* QHSegmentContentScrollView.h */,
-				0445C1A523B0B5AE00C9D326 /* QHSegmentContentScrollView.m */,
-				0445C1A623B0B5AE00C9D326 /* QHSegmentContentView.h */,
-				0445C1A823B0B5AE00C9D326 /* QHSegmentContentView.m */,
-				0445C1AA23B0B5AE00C9D326 /* QHSegmentTitleView.h */,
-				0445C1A723B0B5AE00C9D326 /* QHSegmentTitleView.m */,
-			);
-			path = SegmentView;
 			sourceTree = "<group>";
 		};
 		0445C1AE23B0B8EA00C9D326 /* SGPagingView */ = {
@@ -184,6 +157,20 @@
 				0445C1BF23B0B8EA00C9D326 /* SGPagingViewPopGestureVC.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		0473AC0923B31DC10093D95B /* GQHSegmentedView */ = {
+			isa = PBXGroup;
+			children = (
+				0473AC0A23B31DE70093D95B /* GQHSegmentedView.h */,
+				0445C1C923B0BA8700C9D326 /* GQHSegmentedContentView.h */,
+				0445C1CA23B0BA8700C9D326 /* GQHSegmentedContentView.m */,
+				04C46E3223B1A46100E06BED /* GQHSegmentedTitleViewConfigure.h */,
+				04C46E3323B1A46100E06BED /* GQHSegmentedTitleViewConfigure.m */,
+				04C46E2F23B1A31600E06BED /* GQHSegmentedTitleView.h */,
+				04C46E3023B1A31600E06BED /* GQHSegmentedTitleView.m */,
+			);
+			path = GQHSegmentedView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,9 +256,6 @@
 				04C46E3123B1A31600E06BED /* GQHSegmentedTitleView.m in Sources */,
 				0445C1C323B0B8EA00C9D326 /* UIView+SGPagingView.m in Sources */,
 				04C46E3423B1A46100E06BED /* GQHSegmentedTitleViewConfigure.m in Sources */,
-				0445C1AD23B0B5AE00C9D326 /* QHSegmentContentView.m in Sources */,
-				0445C1AC23B0B5AE00C9D326 /* QHSegmentTitleView.m in Sources */,
-				0445C1AB23B0B5AE00C9D326 /* QHSegmentContentScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

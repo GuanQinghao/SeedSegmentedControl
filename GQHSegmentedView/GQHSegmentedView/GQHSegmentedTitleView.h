@@ -60,12 +60,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param targetIndex 目标索引值
 - (void)qh_setSegmentedTitleViewWithProgress:(CGFloat)progress originalIndex:(NSInteger)originalIndex targetIndex:(NSInteger)targetIndex;
 
-
-
-
-
-
-
 @end
 
 NS_ASSUME_NONNULL_END
