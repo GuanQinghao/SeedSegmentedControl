@@ -16,7 +16,32 @@ NS_ASSUME_NONNULL_BEGIN
 
 @required
 
+/// 滑动分段控件内容视图
+/// @param segmentedContentView 分段视图的内容视图
+/// @param startIndex 滑动开始时的索引值
+/// @param endIndex 滑动结束时的索引值
+/// @param progress 滑动的进度
+- (void)qh_segmentedContentView:(GQHSegmentedContentView *)segmentedContentView didScrollFrom:(NSInteger)startIndex to:(NSInteger)endIndex progress:(CGFloat)progress;
+
 @optional
+
+/// 获取当前内容视图对应的索引值
+/// @param segmentedContentView 分段视图的内容视图
+/// @param index 当前内容视图对应的索引值
+- (void)qh_segmentedContentView:(GQHSegmentedContentView *)segmentedContentView currentIndex:(NSInteger)index;
+
+/// 开始拖拽
+/// @param scrollView 内容滚动视图
+- (void)qh_segmentedContentViewWillBeginDragging:(UIScrollView *)scrollView;
+
+/// 结束拖拽
+/// @param scrollView 内容滚动视图
+- (void)qh_segmentedContentViewDidEndDecelerating:(UIScrollView *)scrollView;
+
+
+
+
+//MARK:---
 
 /// 滑动内容视图
 /// @param segmentedContentView 内容视图
@@ -29,14 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param segmentedContentView 内容视图
 /// @param index 当前子视图控制器的下标
 - (void)qh_segmentedContentView:(GQHSegmentedContentView *)segmentedContentView currentControllerIndex:(NSInteger)index;
-
-/// 开始拖拽
-/// @param scrollView 内容滚动视图
-- (void)qh_segmentedContentViewWillBeginDragging:(UIScrollView *)scrollView;
-
-/// 结束拖拽
-/// @param scrollView 内容滚动视图
-- (void)qh_segmentedContentViewDidEndDecelerating:(UIScrollView *)scrollView;
+//MARK:---
 
 @end
 
@@ -62,8 +80,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 子视图控制器数组
 @property (nonatomic, strong) NSArray<__kindof UIViewController *> *qh_childControllers;
 
-/// 根据下标显示相应的子视图控制器
-/// @param index 下标
+/// 根据索引值显示相应的内容视图
+/// @param index 索引值
 - (void)qh_transferContentViewAtIndex:(NSInteger)index;
 
 @end

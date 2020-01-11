@@ -19,11 +19,10 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
 /// 集合视图
 @property (nonatomic, strong) UICollectionView *collectionView;
 
-
 /// 偏移量
 @property (nonatomic, assign) CGFloat offset;
 
-/// 上一个子视图控制器的下标
+/// 上一个内容视图的索引值
 @property (nonatomic, assign) NSInteger previous;
 
 /// 内容是否正在滚动
@@ -31,23 +30,24 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
 
 @end
 
-
 @implementation GQHSegmentedContentView
 
 - (void)qh_transferContentViewAtIndex:(NSInteger)index {
     
     _offset = index * CGRectGetWidth(self.collectionView.frame);
     
-    // 根据下标设置偏移量
+    // 是否是当前内容视图
     if (_previous != index) {
         
+        // 设置偏移量
         [self.collectionView setContentOffset:CGPointMake(_offset, 0.0f) animated:_qh_animated];
     }
     
     _previous = index;
-    if ([self.qh_delegate respondsToSelector:@selector(qh_segmentedContentView:currentControllerIndex:)]) {
+    
+    if ([self.qh_delegate respondsToSelector:@selector(qh_segmentedContentView:currentIndex:)]) {
         
-        [self.qh_delegate qh_segmentedContentView:self currentControllerIndex:index];
+        [self.qh_delegate qh_segmentedContentView:self currentIndex:index];
     }
 }
 
@@ -84,6 +84,7 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
     // 正在滚动
     _isScrolling = YES;
     
+    // 开始拖拽
     if ([self.qh_delegate respondsToSelector:@selector(qh_segmentedContentViewWillBeginDragging:)]) {
         
         [self.qh_delegate qh_segmentedContentViewWillBeginDragging:scrollView];
@@ -97,7 +98,7 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
     // 结束滚动
     _isScrolling = NO;
     
-    // 计算当前子视图控制器下标
+    // 计算当前内容视图的索引值
      NSInteger index = round(scrollView.contentOffset.x / CGRectGetWidth(scrollView.bounds));
     
     // 结束拖拽
@@ -106,68 +107,75 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
         [self.qh_delegate qh_segmentedContentViewDidEndDecelerating:scrollView];
     }
     
-    // 当前子视图控制器的下标
-    if ([self.qh_delegate respondsToSelector:@selector(qh_segmentedContentView:currentControllerIndex:)]) {
+    // 当前内容视图的索引值
+    if ([self.qh_delegate respondsToSelector:@selector(qh_segmentedContentView:currentIndex:)]) {
         
-        [self.qh_delegate qh_segmentedContentView:self currentControllerIndex:index];
+        [self.qh_delegate qh_segmentedContentView:self currentIndex:index];
     }
 }
 
+/// 视图开始滚动
+/// @param scrollView 滚动视图
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     if (_qh_animated && !_isScrolling) {
         
+        // 视图正在滚动
         return;
     }
     
+    // 滚动进度
     CGFloat progress = 0.0f;
-    NSInteger originalIndex = 0;
-    NSInteger targetIndex = 0;
+    // 开始索引值
+    NSInteger startIndex = 0;
+    // 结束索引值
+    NSInteger endIndex = 0;
     
     // 左滑还是右滑
     CGFloat currentOffset = scrollView.contentOffset.x;
     CGFloat width = CGRectGetWidth(scrollView.bounds);
+    
     if (currentOffset > _offset) {
-        
         // 左滑
+        
         // 计算progress
         progress = currentOffset / width - floor(currentOffset / width);
-        // 计算原来下标
-        originalIndex = currentOffset / width;
-        // 计算目标下标
-        targetIndex = originalIndex + 1;
+        // 计算开始索引值
+        startIndex = currentOffset / width;
+        // 计算结束索引值
+        endIndex = startIndex + 1;
         
-        if (targetIndex >= self.qh_childControllers.count) {
+        if (endIndex >= self.qh_childControllers.count) {
             
             progress = 1;
-            targetIndex = originalIndex;
+            endIndex = startIndex;
         }
         
         // 滑动结束, 相等
         if (currentOffset == (_offset + width)) {
             
             progress = 1;
-            targetIndex = originalIndex;
+            endIndex = startIndex;
         }
     } else {
-        
         // 右滑
+        
         // 计算progress
         progress = 1 - (currentOffset / width - floor(currentOffset / width));
         // 计算原来下标
-        targetIndex = currentOffset / width;
+        endIndex = currentOffset / width;
         // 计算目标下标
-        originalIndex = targetIndex + 1;
+        startIndex = endIndex + 1;
         
-        if (originalIndex >= self.qh_childControllers.count) {
+        if (startIndex >= self.qh_childControllers.count) {
             
-            originalIndex = self.qh_childControllers.count - 1;
+            startIndex = self.qh_childControllers.count - 1;
         }
     }
     
-    if ([self.qh_delegate respondsToSelector:@selector(qh_segmentedContentView:progress:originalIndex:targetIndex:)]) {
+    if ([self.qh_delegate respondsToSelector:@selector(qh_segmentedContentView:didScrollFrom:to:progress:)]) {
         
-        [self.qh_delegate qh_segmentedContentView:self progress:progress originalIndex:originalIndex targetIndex:targetIndex];
+        [self.qh_delegate qh_segmentedContentView:self didScrollFrom:startIndex to:endIndex progress:progress];
     }
 }
 
