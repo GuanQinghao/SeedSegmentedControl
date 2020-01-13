@@ -38,24 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param scrollView 内容滚动视图
 - (void)qh_segmentedContentViewDidEndDecelerating:(UIScrollView *)scrollView;
 
-
-
-
-//MARK:---
-
-/// 滑动内容视图
-/// @param segmentedContentView 内容视图
-/// @param progress 进度
-/// @param originalIndex 初始下标
-/// @param targetIndex 目标下标
-- (void)qh_segmentedContentView:(GQHSegmentedContentView *)segmentedContentView progress:(CGFloat)progress originalIndex:(NSInteger)originalIndex targetIndex:(NSInteger)targetIndex;
-
-/// 当前子视图控制器的下标
-/// @param segmentedContentView 内容视图
-/// @param index 当前子视图控制器的下标
-- (void)qh_segmentedContentView:(GQHSegmentedContentView *)segmentedContentView currentControllerIndex:(NSInteger)index;
-//MARK:---
-
 @end
 
 NS_ASSUME_NONNULL_END

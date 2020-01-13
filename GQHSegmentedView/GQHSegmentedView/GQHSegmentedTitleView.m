@@ -171,8 +171,6 @@
             CGFloat endTextWidth = [self sizeWithString:endButton.currentTitle font:_qh_configure.qh_titleDefaultFont].width;
             CGFloat startTextWidth = [self sizeWithString:startButton.currentTitle font:_qh_configure.qh_titleDefaultFont].width;
             
-            
-            
             CGFloat endIndicatorX = endButtonMaxX - endTextWidth - 0.5f * (buttonWidth - endTextWidth + _qh_configure.qh_indicatorSpacing);
             CGFloat startIndicatorX = startButtonMaxX - startTextWidth - 0.5f * (buttonWidth - startTextWidth + _qh_configure.qh_indicatorSpacing);
             // 总偏移量
@@ -701,14 +699,12 @@
         // 添加分段标签标题滚动视图
         [self addSubview:self.scrollView];
         
-        // 添加标题按钮
-        [self prepareTitleButtons];
-        
         // 添加分隔线
         [self addSubview:self.separator];
+        [self bringSubviewToFront:self.separator];
         
-        // 添加指示器
-        [self.scrollView insertSubview:self.indicator atIndex:0];
+        // 添加标题按钮
+        [self prepareTitleButtons];
     }
     
     return self;
@@ -720,8 +716,18 @@
     CGFloat width = CGRectGetWidth(self.frame);
     CGFloat height = CGRectGetHeight(self.frame);
     
-    // 分段标签滚动视图
+    // 分段标签滚动视图的frame
     _scrollView.frame = self.bounds;
+    
+    // 分割线的frame
+    if (_qh_configure.qh_showSeparator) {
+        
+        CGFloat separatorHeight = 1.0f;
+        CGFloat separatorX = 0.0f;
+        CGFloat separatorY = height - separatorHeight;
+        _separator.frame = CGRectMake(separatorX, separatorY, width, separatorHeight);
+        _separator.backgroundColor = _qh_configure.qh_separatorColor;
+    }
     
     if (_totalWidth <= width) {
         // 标题按钮总宽度小于等于分段标签宽度, 静止样式
@@ -744,15 +750,6 @@
     
     // 分段标题视图的弹性效果
     _scrollView.bounces = _qh_configure.qh_bounces;
-    
-    // 分割线的frame
-    if (_qh_configure.qh_showSeparator) {
-        
-        CGFloat separatorHeight = 1.0f;
-        CGFloat separatorX = 0.0f;
-        CGFloat separatorY = height - separatorHeight;
-        _separator.frame = CGRectMake(separatorX, separatorY, width, separatorHeight);
-    }
     
     //TODO:indicator bug
     // 指示器的frame
@@ -824,7 +821,7 @@
     _scrollView.contentSize = CGSizeMake(width, height);
     
     if (_qh_configure.qh_showSplitter) {
-         
+        
         // 分隔符
         CGFloat splitterWidth = _qh_configure.qh_splitterWidth;
         CGFloat splitterHeight = _qh_configure.qh_splitterHeight;
@@ -864,7 +861,7 @@
     _scrollView.contentSize = CGSizeMake(CGRectGetMaxX(lastButton.frame), height);
     
     if (_qh_configure.qh_showSplitter) {
-         
+        
         // 分隔符
         CGFloat splitterWidth = _qh_configure.qh_splitterWidth;
         CGFloat splitterHeight = _qh_configure.qh_splitterHeight;
@@ -1068,7 +1065,6 @@
     [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     // 移除子视图, 懒加载置空
     self.indicator = nil;
-    self.separator = nil;
     
     // 移除按钮
     [self.buttonArray removeAllObjects];
@@ -1133,7 +1129,9 @@
     //TODO:标题颜色渐变
 }
 
-//MARK:计算字符串尺寸
+/// 计算字符串尺寸
+/// @param string 字符串
+/// @param font 字体
 - (CGSize)sizeWithString:(NSString *)string font:(UIFont *)font {
     
     NSDictionary *attribute = @{NSFontAttributeName:font};

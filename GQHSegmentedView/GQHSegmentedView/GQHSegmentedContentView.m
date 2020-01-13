@@ -15,16 +15,13 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
 
 /// 布局
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
-
 /// 集合视图
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 /// 偏移量
 @property (nonatomic, assign) CGFloat offset;
-
 /// 上一个内容视图的索引值
 @property (nonatomic, assign) NSInteger previous;
-
 /// 内容是否正在滚动
 @property (nonatomic, assign) BOOL isScrolling;
 

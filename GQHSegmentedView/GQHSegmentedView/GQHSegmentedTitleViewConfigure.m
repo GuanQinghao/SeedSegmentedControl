@@ -89,6 +89,11 @@
 
 #pragma mark ---------------------------< view property (分段标签视图属性) >---------------------------
 
+- (void)setQh_separatorColor:(UIColor *)qh_separatorColor {
+    
+    _qh_separatorColor = qh_separatorColor;
+}
+
 #pragma mark -----------------------------< title property (标题属性) >-----------------------------
 
 - (void)setQh_titleScaleFactor:(CGFloat)qh_titleScaleFactor {
