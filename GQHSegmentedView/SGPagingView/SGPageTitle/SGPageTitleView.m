@@ -531,6 +531,8 @@
 - (void)addBadgeForIndex:(NSInteger)index {
     /// 这里使用GCD延迟函数的目的：是将 addBadgeForIndex 方法内部的 badge 布局在 layoutSubviews 之后调用，这里的 badge 是添加在标题（按钮），badge 的布局也可在 layoutSubviews 中在标题（按钮）布局之后布局。这里采取了GCD延迟函数
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.02 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        
         UIButton *btn = self.btnMArr[index];
         UIView *badge = [[UIView alloc] init];
         CGFloat btnTextWidth = [self P_sizeWithString:btn.currentTitle font:self.configure.titleFont].width;
@@ -546,8 +548,11 @@
         [btn addSubview:badge];
     });
 }
+
+
 /** 根据下标值移除 badge */
 - (void)removeBadgeForIndex:(NSInteger)index {
+    
     UIButton *btn = self.btnMArr[index];
     [btn.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 //        if (obj.tag != 0) {
@@ -560,6 +565,9 @@
     }];
 }
 
+
+
+
 /**
  *  根据标题下标值重置标题文字
  *
@@ -567,11 +575,15 @@
  *  @param index    标题所对应的下标
  */
 - (void)resetTitle:(NSString *)title forIndex:(NSInteger)index {
+    
+    
     UIButton *button = (UIButton *)self.btnMArr[index];
     [button setTitle:title forState:UIControlStateNormal];
     
     if (self.configure.showIndicator && _signBtnIndex == index) {
+        
         if (self.configure.indicatorStyle == SGIndicatorStyleDefault || self.configure.indicatorStyle == SGIndicatorStyleCover) {
+            
             CGSize tempSize = [self P_sizeWithString:button.currentTitle font:self.configure.titleFont];
             CGFloat tempIndicatorWidth = self.configure.indicatorAdditionalWidth + tempSize.width;
             if (tempIndicatorWidth > button.SG_width) {
@@ -587,6 +599,7 @@
 - (void)resetIndicatorColor:(UIColor *)color {
     _indicatorView.backgroundColor = color;
 }
+
 /**
  *  重置标题普通状态、选中状态下文字颜色方法
  *
@@ -632,6 +645,24 @@
     [button setAttributedTitle:selectedAttributedTitle forState:(UIControlStateSelected)];
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  *  设置标题图片及位置样式
  *
@@ -641,15 +672,24 @@
  *  @param spacing      图片与标题文字之间的间距
  */
 - (void)setImages:(NSArray *)images selectedImages:(NSArray *)selectedImages imagePositionType:(SGImagePositionType)imagePositionType spacing:(CGFloat)spacing {
+    
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.02 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        
         NSInteger imagesCount = images.count;
+        
         NSInteger selectedImagesCount = selectedImages.count;
+        
         NSInteger titlesCount = self.titleArr.count;
+        
+        
         if (imagesCount < selectedImagesCount) {
             NSLog(@"温馨提示：SGPageTitleView -> [setImages:selectedImages:imagePositionType:spacing] 方法中 images 必须大于或者等于selectedImages，否则 imagePositionTypeDefault 以外的其他样式图片及文字布局将会出现问题");
         }
         
         if (imagesCount < titlesCount) {
+            
             [self.btnMArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 UIButton *btn = obj;
                 if (idx >= imagesCount - 1) {
@@ -657,7 +697,9 @@
                 }
                 [self P_btn:btn imageName:images[idx] imagePositionType:imagePositionType spacing:spacing btnControlState:(UIControlStateNormal)];
             }];
+            
         } else {
+            
             [self.btnMArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 UIButton *btn = obj;
                 [self P_btn:btn imageName:images[idx] imagePositionType:imagePositionType spacing:spacing btnControlState:(UIControlStateNormal)];
@@ -665,6 +707,7 @@
         }
         
         if (selectedImagesCount < titlesCount) {
+            
             [self.btnMArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 UIButton *btn = obj;
                 if (idx >= selectedImagesCount - 1) {
@@ -672,6 +715,7 @@
                 }
                 [self P_btn:btn imageName:selectedImages[idx] imagePositionType:imagePositionType spacing:spacing btnControlState:(UIControlStateSelected)];
             }];
+            
         } else {
             [self.btnMArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 UIButton *btn = obj;
@@ -680,6 +724,8 @@
         }
     });
 }
+
+
 /**
  *  根据标题下标设置标题图片及位置样式
  *
@@ -690,15 +736,24 @@
  *  @param index        标题对应下标值
  */
 - (void)setImage:(NSString *)image selectedImage:(NSString *)selectedImage imagePositionType:(SGImagePositionType)imagePositionType spacing:(CGFloat)spacing forIndex:(NSInteger)index {
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.02 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
         UIFont *configureTitleFont = self.configure.titleFont;
         UIFont *configureTitleSelectedFont = self.configure.titleSelectedFont;
+        
         if ([configureTitleFont.fontName isEqualToString:configureTitleSelectedFont.fontName] && configureTitleFont.pointSize == configureTitleSelectedFont.pointSize) {
+            
+            
             UIButton *btn = self.btnMArr[index];
+            
             if (image != nil) {
+                
                 [self P_btn:btn imageName:image imagePositionType:imagePositionType spacing:spacing btnControlState:(UIControlStateNormal)];
             }
+            
             if (selectedImage != nil) {
+                
                 [self P_btn:btn imageName:selectedImage imagePositionType:imagePositionType spacing:spacing btnControlState:(UIControlStateSelected)];
             }
             return;
@@ -708,32 +763,60 @@
     });
 }
 
+
+
 /// imagePositionType 样式设置方法抽取
 - (void)P_btn:(UIButton *)btn imageName:(NSString *)imageName imagePositionType:(SGImagePositionType)imagePositionType spacing:(CGFloat)spacing btnControlState:(UIControlState)btnControlState {
+    
     if (imagePositionType == SGImagePositionTypeDefault) {
+        
+        
         [btn SG_imagePositionStyle:SGImagePositionStyleDefault spacing:spacing imagePositionBlock:^(UIButton *button) {
             [btn setImage:[UIImage imageNamed:imageName] forState:btnControlState];
         }];
         return;
     }
+    
     if (imagePositionType == SGImagePositionTypeRight) {
         [btn SG_imagePositionStyle:SGImagePositionStyleRight spacing:spacing imagePositionBlock:^(UIButton *button) {
             [btn setImage:[UIImage imageNamed:imageName] forState:btnControlState];
         }];
         return;
     }
+    
     if (imagePositionType == SGImagePositionTypeTop) {
         [btn SG_imagePositionStyle:SGImagePositionStyleTop spacing:spacing imagePositionBlock:^(UIButton *button) {
             [btn setImage:[UIImage imageNamed:imageName] forState:btnControlState];
         }];
         return;
     }
+    
     if (imagePositionType == SGImagePositionTypeBottom) {
         [btn SG_imagePositionStyle:SGImagePositionStyleBottom spacing:spacing imagePositionBlock:^(UIButton *button) {
             [btn setImage:[UIImage imageNamed:imageName] forState:btnControlState];
         }];
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #pragma mark - - - SGPageTitleView 静止样式下指示器默认滚动样式（SGIndicatorScrollStyleDefault）
 - (void)P_staticIndicatorScrollStyleDefaultWithProgress:(CGFloat)progress originalBtn:(UIButton *)originalBtn targetBtn:(UIButton *)targetBtn {

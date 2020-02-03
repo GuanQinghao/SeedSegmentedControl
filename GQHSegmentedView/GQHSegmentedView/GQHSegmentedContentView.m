@@ -15,13 +15,16 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
 
 /// 布局
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+
 /// 集合视图
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 /// 偏移量
 @property (nonatomic, assign) CGFloat offset;
-/// 上一个内容视图的索引值
-@property (nonatomic, assign) NSInteger previous;
+
+/// 当前内容视图的索引值
+@property (nonatomic, assign) NSInteger current;
+
 /// 内容是否正在滚动
 @property (nonatomic, assign) BOOL isScrolling;
 
@@ -34,13 +37,13 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
     _offset = index * CGRectGetWidth(self.collectionView.frame);
     
     // 是否是当前内容视图
-    if (_previous != index) {
+    if (_current != index) {
         
         // 设置偏移量
         [self.collectionView setContentOffset:CGPointMake(_offset, 0.0f) animated:_qh_animated];
     }
     
-    _previous = index;
+    _current = index;
     
     if ([self.qh_delegate respondsToSelector:@selector(qh_segmentedContentView:currentIndex:)]) {
         
@@ -54,8 +57,8 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
         
         // 偏移量
         _offset = 0.0f;
-        // 下标
-        _previous = -1;
+        // 当前内容视图
+        _current = -1;
         
         [self addSubview:self.collectionView];
     }
@@ -96,7 +99,9 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
     _isScrolling = NO;
     
     // 计算当前内容视图的索引值
-     NSInteger index = round(scrollView.contentOffset.x / CGRectGetWidth(scrollView.bounds));
+    NSInteger index = round(scrollView.contentOffset.x / CGRectGetWidth(scrollView.bounds));
+    // 设置当前内容视图的索引值
+    _current = index;
     
     // 结束拖拽
     if ([self.qh_delegate respondsToSelector:@selector(qh_segmentedContentViewDidEndDecelerating:)]) {

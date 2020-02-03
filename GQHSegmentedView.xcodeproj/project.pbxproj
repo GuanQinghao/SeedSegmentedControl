@@ -168,13 +168,13 @@
 		0473AC0923B31DC10093D95B /* GQHSegmentedView */ = {
 			isa = PBXGroup;
 			children = (
-				0473AC0A23B31DE70093D95B /* GQHSegmentedView.h */,
 				0445C1C923B0BA8700C9D326 /* GQHSegmentedContentView.h */,
 				0445C1CA23B0BA8700C9D326 /* GQHSegmentedContentView.m */,
 				04C46E2F23B1A31600E06BED /* GQHSegmentedTitleView.h */,
 				04C46E3023B1A31600E06BED /* GQHSegmentedTitleView.m */,
 				04C46E3223B1A46100E06BED /* GQHSegmentedTitleViewConfigure.h */,
 				04C46E3323B1A46100E06BED /* GQHSegmentedTitleViewConfigure.m */,
+				0473AC0A23B31DE70093D95B /* GQHSegmentedView.h */,
 				04BE97B023C9DFBB006AB006 /* UIButton+GQHSegmentedView.h */,
 				04BE97AE23C9DFBB006AB006 /* UIButton+GQHSegmentedView.m */,
 				04BE97AF23C9DFBB006AB006 /* UIView+GQHSegmentedView.h */,
@@ -409,7 +409,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JM52XZKNAA;
 				INFOPLIST_FILE = GQHSegmentedView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -428,7 +428,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JM52XZKNAA;
 				INFOPLIST_FILE = GQHSegmentedView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

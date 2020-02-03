@@ -9,7 +9,6 @@
 #import "GQHSegmentedTitleView.h"
 #import "GQHSegmentedTitleViewConfigure.h"
 #import "UIView+GQHSegmentedView.h"
-#import "UIButton+GQHSegmentedView.h"
 
 
 @interface GQHSegmentedTitleView ()
@@ -45,6 +44,87 @@
 
 @implementation GQHSegmentedTitleView
 
+/// 设置GQHSegmentedTitleView的图片
+/// @param images 默认的图片名称数组
+/// @param selectedImages 选中的图片名称数组
+/// @param style 图文显示样式
+/// @param spacing 图片和文字的间距
+- (void)qh_setSegmentedTitleViewImages:(NSArray<NSString *> *)images selectedImages:(NSArray<NSString *> *)selectedImages withStyle:(GQHSegmentedTitleViewImageStyle)style spacing:(CGFloat)spacing {
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.02 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        // 默认图片数量
+        NSInteger normalImagesCount = images.count;
+        // 选中图片数量
+        NSInteger selectedImagesCount = selectedImages.count;
+        
+        if (normalImagesCount < selectedImagesCount) {
+            
+            NSAssert(YES, @"布局会发生未知问题");
+        }
+        
+        // 默认图片
+        [self.buttonArray enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            if (idx > normalImagesCount - 1) {
+                
+                *stop = YES;
+            }
+            
+            [self setupImage:images[idx] forButton:obj withStyle:style spacing:spacing state:UIControlStateNormal];
+        }];
+        
+        // 选中图片
+        [self.buttonArray enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            if (idx > selectedImagesCount - 1) {
+                
+                *stop = YES;
+            }
+            
+            [self setupImage:selectedImages[idx] forButton:obj withStyle:style spacing:spacing state:UIControlStateSelected];
+        }];
+    });
+}
+
+/// 根据下标设置GQHSegmentedTitleView的图片
+/// @param image 默认的图片名称
+/// @param selectedImage 选中的图片名称
+/// @param index 下标值
+/// @param style 图文显示样式
+/// @param spacing 图片和文字的间距
+- (void)qh_setSegmentedTitleViewImage:(NSString *)image selectedImage:(NSString *)selectedImage forIndex:(NSInteger)index withStyle:(GQHSegmentedTitleViewImageStyle)style spacing:(CGFloat)spacing {
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.02 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        UIButton *button = self.buttonArray[index];
+        if (image) {
+            
+            [self setupImage:image forButton:button withStyle:style spacing:spacing state:UIControlStateNormal];
+        }
+        
+        if (selectedImage) {
+            
+            [self setupImage:selectedImage forButton:button withStyle:style spacing:spacing state:UIControlStateSelected];
+        }
+    });
+    //TODO:即要缩放文字又要设置图片？
+}
+
+/// 设置按钮图片
+/// @param image 按钮图片
+/// @param button 按钮
+/// @param style 图文样式
+/// @param spacing 图文间距
+/// @param state 按钮状态
+- (void)setupImage:(NSString *)image forButton:(UIButton *)button withStyle:(GQHSegmentedTitleViewImageStyle)style spacing:(CGFloat)spacing state:(UIControlState)state {
+    
+    [button qh_setImageStyle:style spacing:spacing withBlock:^(UIButton * _Nonnull button) {
+        
+        [button setImage:[UIImage imageNamed:image] forState:state];
+    }];
+}
+
 /// GQHSegmentedContentView的代理中需要调用的方法
 /// @param startIndex 切换开始时的索引值
 /// @param endIndex 切换结束时的索引值
@@ -65,7 +145,7 @@
             [self centerButton:endButton];
         }
         
-#warning to-do:为什么这样设置
+        //MARK:为什么这样设置
         _isClicked = NO;
     }
     
@@ -315,7 +395,6 @@
             
             [UIView animateWithDuration:_qh_configure.qh_indicatorAnimationTime animations:^{
                 
-#warning to-do: endButton?
                 if (indicatorWidth >= CGRectGetWidth(startButton.frame)) {
                     
                     self.indicator.qh_width = startButton.qh_width;
@@ -1129,7 +1208,7 @@
     //TODO:标题颜色渐变
 }
 
-/// 计算字符串尺寸
+/// 根据字体计算字符串尺寸
 /// @param string 字符串
 /// @param font 字体
 - (CGSize)sizeWithString:(NSString *)string font:(UIFont *)font {
@@ -1145,6 +1224,8 @@
     _qh_titleArray = qh_titleArray;
     
     [self prepareTitleButtons];
+    // 立即刷新布局
+    [self setNeedsLayout];
 }
 
 - (void)setQh_configure:(GQHSegmentedTitleViewConfigure *)qh_configure {
@@ -1152,6 +1233,8 @@
     _qh_configure = qh_configure;
     
     [self prepareTitleButtons];
+    // 立即刷新布局
+    [self setNeedsLayout];
 }
 
 - (void)setQh_selectedIndex:(NSInteger)qh_selectedIndex {
