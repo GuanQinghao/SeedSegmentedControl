@@ -1,13 +1,13 @@
 //
 //  GQHHomeController.m
-//  SeedSegmentedView_Example
+//  SeedSegmentedControl
 //
 //  Created by Mac on 2020/4/20.
 //  Copyright © 2020 GuanQinghao. All rights reserved.
 //
 
 #import "GQHHomeController.h"
-#import <SeedSegmentedView.h>
+#import <SeedSegmentedControl.h>
 #import "GQHOneChildController.h"
 #import "GQHTwoChildController.h"
 

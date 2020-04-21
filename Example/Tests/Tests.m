@@ -1,8 +1,8 @@
 //
-//  SeedSegmentedViewTests.m
-//  SeedSegmentedViewTests
+//  SeedSegmentedControlTests.m
+//  SeedSegmentedControlTests
 //
-//  Created by GuanQinghao on 04/20/2020.
+//  Created by GuanQinghao on 04/21/2020.
 //  Copyright (c) 2020 GuanQinghao. All rights reserved.
 //
 

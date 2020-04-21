@@ -1,6 +1,6 @@
 //
-//  AppDelegate.h
-//  SeedSegmentedView_Example
+//  GQHOneChildController.h
+//  SeedSegmentedControl
 //
 //  Created by Mac on 2020/4/20.
 //  Copyright © 2020 GuanQinghao. All rights reserved.
@@ -10,9 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface GQHOneChildController : UIViewController
 
 @end
 

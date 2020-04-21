@@ -1,11 +1,11 @@
 PODS:
   - Expecta (1.0.6)
-  - SeedSegmentedView (0.1.0)
+  - SeedSegmentedControl (0.1.0)
   - Specta (1.0.7)
 
 DEPENDENCIES:
   - Expecta
-  - SeedSegmentedView (from `../`)
+  - SeedSegmentedControl (from `../`)
   - Specta
 
 SPEC REPOS:
@@ -14,14 +14,14 @@ SPEC REPOS:
     - Specta
 
 EXTERNAL SOURCES:
-  SeedSegmentedView:
+  SeedSegmentedControl:
     :path: "../"
 
 SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
-  SeedSegmentedView: 4131e696e8c002f8230b15d6b0a5b6156c75c306
+  SeedSegmentedControl: 56e41a1aefb021dbeb2a8fb4b99d9d2d23169ff5
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
-PODFILE CHECKSUM: 0b98c80ab340f03ca84dde7e5bcd12513ebfd81c
+PODFILE CHECKSUM: 4413879faebc53412803df940ef84c74a2ec0cef
 
 COCOAPODS: 1.9.1

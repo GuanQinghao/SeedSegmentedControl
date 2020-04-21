@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6003F589195388D20070C39A"
-               BuildableName = "SeedSegmentedView_Example.app"
-               BlueprintName = "SeedSegmentedView_Example"
-               ReferencedContainer = "container:SeedSegmentedView.xcodeproj">
+               BuildableName = "SeedSegmentedControl_Example.app"
+               BlueprintName = "SeedSegmentedControl_Example"
+               ReferencedContainer = "container:SeedSegmentedControl.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6003F5AD195388D20070C39A"
-               BuildableName = "SeedSegmentedView_Tests.xctest"
-               BlueprintName = "SeedSegmentedView_Tests"
-               ReferencedContainer = "container:SeedSegmentedView.xcodeproj">
+               BuildableName = "SeedSegmentedControl_Tests.xctest"
+               BlueprintName = "SeedSegmentedControl_Tests"
+               ReferencedContainer = "container:SeedSegmentedControl.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6003F589195388D20070C39A"
-            BuildableName = "SeedSegmentedView_Example.app"
-            BlueprintName = "SeedSegmentedView_Example"
-            ReferencedContainer = "container:SeedSegmentedView.xcodeproj">
+            BuildableName = "SeedSegmentedControl_Example.app"
+            BlueprintName = "SeedSegmentedControl_Example"
+            ReferencedContainer = "container:SeedSegmentedControl.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6003F589195388D20070C39A"
-            BuildableName = "SeedSegmentedView_Example.app"
-            BlueprintName = "SeedSegmentedView_Example"
-            ReferencedContainer = "container:SeedSegmentedView.xcodeproj">
+            BuildableName = "SeedSegmentedControl_Example.app"
+            BlueprintName = "SeedSegmentedControl_Example"
+            ReferencedContainer = "container:SeedSegmentedControl.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6003F589195388D20070C39A"
-            BuildableName = "SeedSegmentedView_Example.app"
-            BlueprintName = "SeedSegmentedView_Example"
-            ReferencedContainer = "container:SeedSegmentedView.xcodeproj">
+            BuildableName = "SeedSegmentedControl_Example.app"
+            BlueprintName = "SeedSegmentedControl_Example"
+            ReferencedContainer = "container:SeedSegmentedControl.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

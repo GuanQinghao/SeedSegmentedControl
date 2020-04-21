@@ -1,9 +1,9 @@
-# SeedSegmentedView
+# SeedSegmentedControl
 
-[![CI Status](https://img.shields.io/travis/GuanQinghao/SeedSegmentedView.svg?style=flat)](https://travis-ci.org/GuanQinghao/SeedSegmentedView)
-[![Version](https://img.shields.io/cocoapods/v/SeedSegmentedView.svg?style=flat)](https://cocoapods.org/pods/SeedSegmentedView)
-[![License](https://img.shields.io/cocoapods/l/SeedSegmentedView.svg?style=flat)](https://cocoapods.org/pods/SeedSegmentedView)
-[![Platform](https://img.shields.io/cocoapods/p/SeedSegmentedView.svg?style=flat)](https://cocoapods.org/pods/SeedSegmentedView)
+[![CI Status](https://img.shields.io/travis/GuanQinghao/SeedSegmentedControl.svg?style=flat)](https://travis-ci.org/GuanQinghao/SeedSegmentedControl)
+[![Version](https://img.shields.io/cocoapods/v/SeedSegmentedControl.svg?style=flat)](https://cocoapods.org/pods/SeedSegmentedControl)
+[![License](https://img.shields.io/cocoapods/l/SeedSegmentedControl.svg?style=flat)](https://cocoapods.org/pods/SeedSegmentedControl)
+[![Platform](https://img.shields.io/cocoapods/p/SeedSegmentedControl.svg?style=flat)](https://cocoapods.org/pods/SeedSegmentedControl)
 
 ## Example
 
@@ -13,11 +13,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-SeedSegmentedView is available through [CocoaPods](https://cocoapods.org). To install
+SeedSegmentedControl is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'SeedSegmentedView'
+pod 'SeedSegmentedControl'
 ```
 
 ## Author
@@ -26,4 +26,4 @@ GuanQinghao, qinghaoguan@163.com
 
 ## License
 
-SeedSegmentedView is available under the MIT license. See the LICENSE file for more info.
+SeedSegmentedControl is available under the MIT license. See the LICENSE file for more info.

@@ -1,6 +1,6 @@
 //
-//  GQHHomeController.h
-//  SeedSegmentedView_Example
+//  GQHTwoChildController.h
+//  SeedSegmentedControl
 //
 //  Created by Mac on 2020/4/20.
 //  Copyright © 2020 GuanQinghao. All rights reserved.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GQHHomeController : UIViewController
+@interface GQHTwoChildController : UIViewController
 
 @end
 

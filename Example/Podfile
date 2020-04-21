@@ -2,10 +2,10 @@ use_frameworks!
 
 platform :ios, '8.0'
 
-target 'SeedSegmentedView_Example' do
-  pod 'SeedSegmentedView', :path => '../'
+target 'SeedSegmentedControl_Example' do
+  pod 'SeedSegmentedControl', :path => '../'
 
-  target 'SeedSegmentedView_Tests' do
+  target 'SeedSegmentedControl_Tests' do
     inherit! :search_paths
 
     pod 'Specta'
