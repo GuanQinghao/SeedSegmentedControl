@@ -1,6 +1,6 @@
 PODS:
   - Expecta (1.0.6)
-  - SeedSegmentedControl (1.0.0)
+  - SeedSegmentedControl (1.0.2)
   - Specta (1.0.7)
 
 DEPENDENCIES:
@@ -19,7 +19,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
-  SeedSegmentedControl: c5e52c6a0a95089ef9feef83598071e583350ec9
+  SeedSegmentedControl: cc45b1bd16848cceb7c135cea744e425cebf6393
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
 PODFILE CHECKSUM: 4413879faebc53412803df940ef84c74a2ec0cef
