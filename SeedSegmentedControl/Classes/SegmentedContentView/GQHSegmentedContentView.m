@@ -212,6 +212,7 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
 - (void)setQh_childControllers:(NSArray<__kindof UIViewController *> *)qh_childControllers {
     
     _qh_childControllers = qh_childControllers;
+    [self.collectionView reloadData];
 }
 
 - (void)setQh_scrollEnabled:(BOOL)qh_scrollEnabled {

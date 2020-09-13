@@ -865,8 +865,11 @@
         _indicator.layer.cornerRadius = (_qh_configure.qh_indicatorCornerRadius > max) ? max : _qh_configure.qh_indicatorCornerRadius;
     }
     
-    // 选中按钮
-    [self didClickTitleButton: self.buttonArray[_qh_selectedIndex]];
+    if (self.buttonArray.count > 0) {
+            
+        // 选中按钮
+        [self didClickTitleButton: self.buttonArray[_qh_selectedIndex]];
+    }
 }
 
 /// 等宽布局
