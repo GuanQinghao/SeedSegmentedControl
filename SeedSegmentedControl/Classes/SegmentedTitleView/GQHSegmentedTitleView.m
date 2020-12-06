@@ -8,7 +8,7 @@
 
 #import "GQHSegmentedTitleView.h"
 #import "GQHSegmentedTitleViewConfigure.h"
-#import "UIView+GQHSegmentedView.h"
+#import "UIView+GQHFrame.h"
 
 
 @interface GQHSegmentedTitleView ()
@@ -136,6 +136,7 @@
     UIButton *endButton = _buttonArray[endIndex];
     
     _currentIndex = endButton.tag;
+    _qh_selectedIndex = endButton.tag;
     
     //  标题居中处理
     if (_totalWidth > CGRectGetWidth(self.frame)) {
@@ -866,7 +867,7 @@
     }
     
     if (self.buttonArray.count > 0) {
-            
+        
         // 选中按钮
         [self didClickTitleButton: self.buttonArray[_qh_selectedIndex]];
     }
@@ -989,6 +990,7 @@
     
     // 标记下标
     _currentIndex = sender.tag;
+    _qh_selectedIndex = sender.tag;
 }
 
 /// 改变按钮的状态

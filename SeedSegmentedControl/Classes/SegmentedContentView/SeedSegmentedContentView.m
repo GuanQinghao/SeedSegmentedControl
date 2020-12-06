@@ -1,17 +1,17 @@
 //
-//  GQHSegmentedContentView.m
-//  GQHSegmentedView
+//  SeedSegmentedContentView.m
+//  SeedSegmentedControl
 //
-//  Created by Mac on 2019/12/23.
-//  Copyright © 2019 GuanQinghao. All rights reserved.
+//  Created by Hao on 2020/12/6.
 //
 
-#import "GQHSegmentedContentView.h"
+#import "SeedSegmentedContentView.h"
 
 
-static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
+/// 复用标识
+static NSString *kCellReuseIdentifier = @"SeedSegmentedContentView";
 
-@interface GQHSegmentedContentView () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface SeedSegmentedContentView () <UICollectionViewDelegate,UICollectionViewDataSource>
 
 /// 布局
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
@@ -26,9 +26,11 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
 
 @end
 
-@implementation GQHSegmentedContentView
+@implementation SeedSegmentedContentView
 
-- (void)qh_transferContentViewAtIndex:(NSInteger)index {
+/// 根据索引值显示相应的内容视图
+/// @param index 索引值
+- (void)s_transferContentViewAtIndex:(NSInteger)index {
     
     _offset = index * CGRectGetWidth(self.collectionView.frame);
     
@@ -36,16 +38,18 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
     if (_current != index) {
         
         // 设置偏移量
-        [self.collectionView setContentOffset:CGPointMake(_offset, 0.0f) animated:_qh_animated];
+        [self.collectionView setContentOffset:CGPointMake(_offset, 0.0f) animated:_s_animated];
     }
     
     _current = index;
     
-    if ([self.qh_delegate respondsToSelector:@selector(qh_segmentedContentView:currentIndex:)]) {
+    if ([self.s_delegate respondsToSelector:@selector(s_segmentedContentView:currentIndex:)]) {
         
-        [self.qh_delegate qh_segmentedContentView:self currentIndex:index];
+        [self.s_delegate s_segmentedContentView:self currentIndex:index];
     }
 }
+
+#pragma mark --------------------------- <lifecycle> ---------------------------
 
 - (instancetype)initWithFrame:(CGRect)frame {
     
@@ -69,6 +73,8 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
     _collectionView.frame = self.bounds;
 }
 
+#pragma mark --------------------- <delegate & datasource> ---------------------
+
 #pragma mark - UIScrollViewDelegate
 
 /// 开始拖拽
@@ -81,9 +87,9 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
     _isScrolling = YES;
     
     // 开始拖拽
-    if ([self.qh_delegate respondsToSelector:@selector(qh_segmentedContentViewWillBeginDragging:)]) {
+    if ([self.s_delegate respondsToSelector:@selector(s_segmentedContentViewWillBeginDragging:)]) {
         
-        [self.qh_delegate qh_segmentedContentViewWillBeginDragging:scrollView];
+        [self.s_delegate s_segmentedContentViewWillBeginDragging:scrollView];
     }
 }
 
@@ -100,15 +106,15 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
     _current = index;
     
     // 结束拖拽
-    if ([self.qh_delegate respondsToSelector:@selector(qh_segmentedContentViewDidEndDecelerating:)]) {
+    if ([self.s_delegate respondsToSelector:@selector(s_segmentedContentViewDidEndDecelerating:)]) {
         
-        [self.qh_delegate qh_segmentedContentViewDidEndDecelerating:scrollView];
+        [self.s_delegate s_segmentedContentViewDidEndDecelerating:scrollView];
     }
     
     // 当前内容视图的索引值
-    if ([self.qh_delegate respondsToSelector:@selector(qh_segmentedContentView:currentIndex:)]) {
+    if ([self.s_delegate respondsToSelector:@selector(s_segmentedContentView:currentIndex:)]) {
         
-        [self.qh_delegate qh_segmentedContentView:self currentIndex:index];
+        [self.s_delegate s_segmentedContentView:self currentIndex:index];
     }
 }
 
@@ -116,7 +122,7 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
 /// @param scrollView 滚动视图
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    if (_qh_animated && !_isScrolling) {
+    if (_s_animated && !_isScrolling) {
         
         // 视图正在滚动
         return;
@@ -134,7 +140,7 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
     CGFloat width = CGRectGetWidth(scrollView.bounds);
     
     if (currentOffset > _offset) {
-        // 左滑
+        //MARK: 左滑
         
         // 计算progress
         progress = currentOffset / width - floor(currentOffset / width);
@@ -143,7 +149,7 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
         // 计算结束索引值
         endIndex = startIndex + 1;
         
-        if (endIndex >= self.qh_childControllers.count) {
+        if (endIndex >= self.s_childControllers.count) {
             
             progress = 1;
             endIndex = startIndex;
@@ -156,7 +162,7 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
             endIndex = startIndex;
         }
     } else {
-        // 右滑
+        //MARK: 右滑
         
         // 计算progress
         progress = 1 - (currentOffset / width - floor(currentOffset / width));
@@ -165,15 +171,15 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
         // 计算目标下标
         startIndex = endIndex + 1;
         
-        if (startIndex >= self.qh_childControllers.count) {
+        if (startIndex >= self.s_childControllers.count) {
             
-            startIndex = self.qh_childControllers.count - 1;
+            startIndex = self.s_childControllers.count - 1;
         }
     }
     
-    if ([self.qh_delegate respondsToSelector:@selector(qh_segmentedContentView:didScrollFrom:to:progress:)]) {
+    if ([self.s_delegate respondsToSelector:@selector(s_segmentedContentView:didScrollFrom:to:progress:)]) {
         
-        [self.qh_delegate qh_segmentedContentView:self didScrollFrom:startIndex to:endIndex progress:progress];
+        [self.s_delegate s_segmentedContentView:self didScrollFrom:startIndex to:endIndex progress:progress];
     }
 }
 
@@ -181,7 +187,7 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return self.qh_childControllers.count;
+    return self.s_childControllers.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -191,43 +197,33 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
     [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     // 再设置内容
-    UIViewController *childController = self.qh_childControllers[indexPath.item];
+    UIViewController *childController = self.s_childControllers[indexPath.item];
     // ⚠️注意: 先调用 addChildViewController 再调用 addSubview, 子视图控制器和父视图控制器同步, 不会多次触发viewWillAppear和viewWillAppear
-    [self.qh_parentController addChildViewController:childController];
+    [self.s_parentController addChildViewController:childController];
     [cell.contentView addSubview:childController.view];
     
     childController.view.frame = cell.contentView.frame;
-    [childController didMoveToParentViewController:self.qh_parentController];
+    [childController didMoveToParentViewController:self.s_parentController];
     
     return cell;
 }
+#pragma mark ------------------------ <setter & getter> ------------------------
 
-#pragma mark - Setter
+#pragma mark - setter
 
-- (void)setQh_parentController:(__kindof UIViewController *)qh_parentController {
+- (void)setS_childControllers:(NSArray<__kindof UIViewController *> *)s_childControllers {
     
-    _qh_parentController = qh_parentController;
-}
-
-- (void)setQh_childControllers:(NSArray<__kindof UIViewController *> *)qh_childControllers {
-    
-    _qh_childControllers = qh_childControllers;
-    
+    _s_childControllers = s_childControllers;
     [self.collectionView reloadData];
 }
 
-- (void)setQh_scrollEnabled:(BOOL)qh_scrollEnabled {
+- (void)setS_scrollEnabled:(BOOL)s_scrollEnabled {
     
-    _qh_scrollEnabled = qh_scrollEnabled;
-    _collectionView.scrollEnabled = qh_scrollEnabled;
+    _s_scrollEnabled = s_scrollEnabled;
+    _collectionView.scrollEnabled = s_scrollEnabled;
 }
 
-- (void)setQh_animated:(BOOL)qh_animated {
-    
-    _qh_animated = qh_animated;
-}
-
-#pragma mark - Getter
+#pragma mark - getter
 
 - (UICollectionView *)collectionView {
     
@@ -239,19 +235,15 @@ static NSString *kCellReuseIdentifier = @"GQHSegmentedContentView";
         _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout: _flowLayout];
-        _collectionView.backgroundColor = [UIColor clearColor];
+        _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.bounces = NO;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.pagingEnabled = YES;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
+        _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:kCellReuseIdentifier];
-        
-        if (@available(iOS 11.0, *)) {
-            
-            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        }
     }
     
     return _collectionView;

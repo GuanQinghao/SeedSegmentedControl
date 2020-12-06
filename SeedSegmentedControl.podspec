@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'GuanQinghao' => 'qinghaoguan@163.com' }
   s.source           = { :git => 'https://github.com/GuanQinghao/SeedSegmentedControl.git', :tag => s.version.to_s }
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '11.0'
   s.source_files = 'SeedSegmentedControl/Classes/**/*'
   s.public_header_files = 'Pod/Classes/SeedSegmentedControl.h'
 end
