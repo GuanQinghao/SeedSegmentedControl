@@ -1,6 +1,12 @@
 PODS:
   - Expecta (1.0.6)
-  - SeedSegmentedControl (1.0.2)
+  - SeedSegmentedControl (1.1.1):
+    - SeedSegmentedControl/SeedSegmentedCategory (= 1.1.1)
+    - SeedSegmentedControl/SeedSegmentedContentView (= 1.1.1)
+    - SeedSegmentedControl/SeedSegmentedTitleView (= 1.1.1)
+  - SeedSegmentedControl/SeedSegmentedCategory (1.1.1)
+  - SeedSegmentedControl/SeedSegmentedContentView (1.1.1)
+  - SeedSegmentedControl/SeedSegmentedTitleView (1.1.1)
   - Specta (1.0.7)
 
 DEPENDENCIES:
@@ -19,9 +25,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
-  SeedSegmentedControl: e1d97b7a708225074f273b07c93879c094efe0e1
+  SeedSegmentedControl: b56933c6f446449a33113c469b50cbfacb1b2e9e
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
-PODFILE CHECKSUM: 4413879faebc53412803df940ef84c74a2ec0cef
+PODFILE CHECKSUM: b0a7ddd30ff2b65a378cd7a4672d78b6f3d8639b
 
 COCOAPODS: 1.10.1

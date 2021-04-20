@@ -9,5 +9,4 @@
 
 #import "SeedSegmentedTitleView.h"
 #import "SeedSegmentedTitleViewConfigure.h"
-
 #import "SeedSegmentedContentView.h"
