@@ -7,13 +7,14 @@
 
 #import "UIButton+SeedSegmentedControl.h"
 
+
 @implementation UIButton (SeedSegmentedControl)
 
 /// 设置标题按钮的图文样式
 /// @param style 图文样式
 /// @param spacing 图文间距
 /// @param operation 图文设置回调(回调中设置图片和文字)
-- (void)s_setTitleStyle:(SeedSegmentedTitleStyle)style spacing:(CGFloat)spacing withOperation:(void (^)(UIButton * _Nonnull))operation {
+- (void)s_setTitleGraphicStyle:(SeedSegmentedTitleGraphicStyle)style spacing:(CGFloat)spacing withOperation:(void (^)(UIButton * _Nonnull))operation {
     
     if (operation) {
         
@@ -21,7 +22,7 @@
     }
     
     switch (style) {
-        case SeedSegmentedTitleStyleDefault: {
+        case SeedSegmentedTitleGraphicStyleLeft: {
             
             if (self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentLeft) {
                 
@@ -36,7 +37,7 @@
             }
         }
             break;
-        case SeedSegmentedTitleStyleRight: {
+        case SeedSegmentedTitleGraphicStyleRight: {
             
             CGFloat imageWidth = self.imageView.image.size.width;
             CGFloat titleWidth = self.titleLabel.frame.size.width;
@@ -58,7 +59,7 @@
             }
         }
             break;
-        case SeedSegmentedTitleStyleTop: {
+        case SeedSegmentedTitleGraphicStyleTop: {
             
             CGFloat imageWidth = self.imageView.frame.size.width;
             CGFloat imageHeight = self.imageView.frame.size.height;
@@ -69,7 +70,7 @@
             self.titleEdgeInsets = UIEdgeInsetsMake(0.0f, -imageWidth, -imageHeight - spacing, 0.0f);
         }
             break;
-        case SeedSegmentedTitleStyleBottom: {
+        case SeedSegmentedTitleGraphicStyleBottom: {
             
             CGFloat imageWidth = self.imageView.frame.size.width;
             CGFloat imageHeight = self.imageView.frame.size.height;

@@ -1,5 +1,5 @@
 //
-//  GQHHomeController.h
+//  SeedTwoChildController.h
 //  SeedSegmentedControl
 //
 //  Created by Mac on 2020/4/20.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GQHHomeController : UIViewController
+@interface SeedTwoChildController : UIViewController
 
 @end
 

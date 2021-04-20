@@ -207,6 +207,7 @@ static NSString *kCellReuseIdentifier = @"SeedSegmentedContentView";
     
     return cell;
 }
+
 #pragma mark ------------------------ <setter & getter> ------------------------
 
 #pragma mark - setter

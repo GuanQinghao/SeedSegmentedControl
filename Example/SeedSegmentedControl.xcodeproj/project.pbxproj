@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		04A48A2B244E923100C88151 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A48A24244E923100C88151 /* AppDelegate.m */; };
-		04A48A2C244E923100C88151 /* GQHHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A48A25244E923100C88151 /* GQHHomeController.m */; };
-		04A48A2D244E923100C88151 /* GQHOneChildController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A48A27244E923100C88151 /* GQHOneChildController.m */; };
-		04A48A2E244E923100C88151 /* GQHTwoChildController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A48A29244E923100C88151 /* GQHTwoChildController.m */; };
+		04A48A2C244E923100C88151 /* SeedHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A48A25244E923100C88151 /* SeedHomeController.m */; };
+		04A48A2D244E923100C88151 /* SeedOneChildController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A48A27244E923100C88151 /* SeedOneChildController.m */; };
+		04A48A2E244E923100C88151 /* SeedTwoChildController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A48A29244E923100C88151 /* SeedTwoChildController.m */; };
 		051A9832E88BAE1071291D3B /* Pods_SeedSegmentedControl_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301251C11F76C5736AC6F124 /* Pods_SeedSegmentedControl_Tests.framework */; };
 		3D4E2C2A70639406D6A1C54B /* Pods_SeedSegmentedControl_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D122B3C8A0CFAB724199DA /* Pods_SeedSegmentedControl_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -39,16 +39,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04A48A23244E923100C88151 /* GQHHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQHHomeController.h; sourceTree = "<group>"; };
 		04A48A24244E923100C88151 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		04A48A25244E923100C88151 /* GQHHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GQHHomeController.m; sourceTree = "<group>"; };
-		04A48A26244E923100C88151 /* GQHOneChildController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQHOneChildController.h; sourceTree = "<group>"; };
-		04A48A27244E923100C88151 /* GQHOneChildController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GQHOneChildController.m; sourceTree = "<group>"; };
-		04A48A28244E923100C88151 /* GQHTwoChildController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQHTwoChildController.h; sourceTree = "<group>"; };
-		04A48A29244E923100C88151 /* GQHTwoChildController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GQHTwoChildController.m; sourceTree = "<group>"; };
+		04A48A25244E923100C88151 /* SeedHomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeedHomeController.m; sourceTree = "<group>"; };
+		04A48A26244E923100C88151 /* SeedOneChildController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeedOneChildController.h; sourceTree = "<group>"; };
+		04A48A27244E923100C88151 /* SeedOneChildController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeedOneChildController.m; sourceTree = "<group>"; };
+		04A48A28244E923100C88151 /* SeedTwoChildController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeedTwoChildController.h; sourceTree = "<group>"; };
+		04A48A29244E923100C88151 /* SeedTwoChildController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeedTwoChildController.m; sourceTree = "<group>"; };
 		04A48A2A244E923100C88151 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2FF1B80206668D21CB820316 /* SeedSegmentedControl.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SeedSegmentedControl.podspec; path = ../SeedSegmentedControl.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		301251C11F76C5736AC6F124 /* Pods_SeedSegmentedControl_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeedSegmentedControl_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FBE5E07262E8373007FF30E /* SeedHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeedHomeController.h; sourceTree = "<group>"; };
 		46D122B3C8A0CFAB724199DA /* Pods_SeedSegmentedControl_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeedSegmentedControl_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		480C8B4C1A914C49811FE1AC /* Pods-SeedSegmentedControl_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeedSegmentedControl_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SeedSegmentedControl_Tests/Pods-SeedSegmentedControl_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* SeedSegmentedControl_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeedSegmentedControl_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,12 +151,12 @@
 			children = (
 				04A48A2A244E923100C88151 /* AppDelegate.h */,
 				04A48A24244E923100C88151 /* AppDelegate.m */,
-				04A48A23244E923100C88151 /* GQHHomeController.h */,
-				04A48A25244E923100C88151 /* GQHHomeController.m */,
-				04A48A26244E923100C88151 /* GQHOneChildController.h */,
-				04A48A27244E923100C88151 /* GQHOneChildController.m */,
-				04A48A28244E923100C88151 /* GQHTwoChildController.h */,
-				04A48A29244E923100C88151 /* GQHTwoChildController.m */,
+				3FBE5E07262E8373007FF30E /* SeedHomeController.h */,
+				04A48A25244E923100C88151 /* SeedHomeController.m */,
+				04A48A26244E923100C88151 /* SeedOneChildController.h */,
+				04A48A27244E923100C88151 /* SeedOneChildController.m */,
+				04A48A28244E923100C88151 /* SeedTwoChildController.h */,
+				04A48A29244E923100C88151 /* SeedTwoChildController.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
@@ -255,9 +255,12 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = GQH;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = GuanQinghao;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = JM52XZKNAA;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -265,10 +268,9 @@
 			};
 			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "SeedSegmentedControl" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -395,11 +397,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04A48A2E244E923100C88151 /* GQHTwoChildController.m in Sources */,
-				04A48A2D244E923100C88151 /* GQHOneChildController.m in Sources */,
+				04A48A2E244E923100C88151 /* SeedTwoChildController.m in Sources */,
+				04A48A2D244E923100C88151 /* SeedOneChildController.m in Sources */,
 				04A48A2B244E923100C88151 /* AppDelegate.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
-				04A48A2C244E923100C88151 /* GQHHomeController.m in Sources */,
+				04A48A2C244E923100C88151 /* SeedHomeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,7 +484,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -515,7 +517,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -527,6 +529,7 @@
 			baseConfigurationReference = 741AE2000E8994CCD8E912B7 /* Pods-SeedSegmentedControl_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JM52XZKNAA;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SeedSegmentedControl/SeedSegmentedControl-Prefix.pch";
 				INFOPLIST_FILE = "SeedSegmentedControl/SeedSegmentedControl-Info.plist";
@@ -543,6 +546,7 @@
 			baseConfigurationReference = B25DFAED9AB1E36E0A4A8208 /* Pods-SeedSegmentedControl_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = JM52XZKNAA;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SeedSegmentedControl/SeedSegmentedControl-Prefix.pch";
 				INFOPLIST_FILE = "SeedSegmentedControl/SeedSegmentedControl-Info.plist";

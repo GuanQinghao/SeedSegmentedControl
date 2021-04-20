@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "GQHHomeController.h"
+#import "SeedHomeController.h"
 
 @implementation AppDelegate
 
@@ -17,7 +17,7 @@
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     [self.window makeKeyAndVisible];
     
-    GQHHomeController *controller = [[GQHHomeController alloc] init];
+    SeedHomeController *controller = [[SeedHomeController alloc] init];
     [self.window setRootViewController:controller];
     
     return YES;

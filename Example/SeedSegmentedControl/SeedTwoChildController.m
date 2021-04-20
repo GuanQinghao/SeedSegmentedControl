@@ -1,24 +1,24 @@
 //
-//  GQHOneChildController.m
+//  SeedTwoChildController.m
 //  SeedSegmentedControl
 //
 //  Created by Mac on 2020/4/20.
 //  Copyright © 2020 GuanQinghao. All rights reserved.
 //
 
-#import "GQHOneChildController.h"
+#import "SeedTwoChildController.h"
 
-@interface GQHOneChildController ()
+@interface SeedTwoChildController ()
 
 @end
 
-@implementation GQHOneChildController
+@implementation SeedTwoChildController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = UIColor.redColor;
+    self.view.backgroundColor = UIColor.blueColor;
 }
 
 /*

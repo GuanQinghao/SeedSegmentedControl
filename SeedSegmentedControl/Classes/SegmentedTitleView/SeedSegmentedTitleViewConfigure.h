@@ -8,31 +8,47 @@
 #import <UIKit/UIKit.h>
 
 
+
+NS_ASSUME_NONNULL_BEGIN
+
 /// 分段标签指示器样式
-typedef NS_ENUM(NSUInteger, SeedSegmentedViewIndicatorStyle) {
+typedef NS_ENUM(NSUInteger, SeedSegmentedIndicatorStyle) {
     
-    SeedSegmentedViewIndicatorStyleDefault, // 默认样式, 下划线样式
-    SeedSegmentedViewIndicatorStyleCover, // 遮盖样式
-    SeedSegmentedViewIndicatorStyleFixed, // 固定样式
-    SeedSegmentedViewIndicatorStyleDynamic // 动态样式
+    /// 默认样式, 下划线样式
+    SeedSegmentedIndicatorStyleDefault,
+    /// 遮盖样式
+    SeedSegmentedIndicatorStyleCover,
+    /// 固定样式
+    SeedSegmentedIndicatorStyleFixed,
+    /// 动态样式
+    SeedSegmentedIndicatorStyleDynamic
 };
 
+NS_ASSUME_NONNULL_END
+
+
+NS_ASSUME_NONNULL_BEGIN
 
 /// 分段标签指示器滚动样式
-typedef NS_ENUM(NSUInteger, SeedSegmentedViewIndicatorScrollStyle) {
+typedef NS_ENUM(NSUInteger, SeedSegmentedIndicatorScrollStyle) {
     
-    SeedSegmentedViewIndicatorScrollStyleDefault, // 默认样式, 随内容滚动指示器位置发生改变
-    SeedSegmentedViewIndicatorScrollStyleHalf, // 内容滚动一半指示器位置发生改变
-    SeedSegmentedViewIndicatorScrollStyleEnd, // 内容滚动结束指示器位置发生改变
+    /// 默认样式, 随内容滚动指示器位置发生改变
+    SeedSegmentedIndicatorScrollStyleDefault,
+    /// 内容滚动一半指示器位置发生改变
+    SeedSegmentedIndicatorScrollStyleHalf,
+    /// 内容滚动结束指示器位置发生改变
+    SeedSegmentedIndicatorScrollStyleEnd
 };
+
+NS_ASSUME_NONNULL_END
 
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SeedSegmentedTitleViewConfigure : NSObject
 
-/// 快速创建SegmentedTitleViewConfigure
-+ (instancetype)s_segmentedTitleViewConfigure;
+/// 默认配置
++ (instancetype)s_defaultConfigure;
 
 #pragma mark ---------------------------< view property (分段标签视图属性) >---------------------------
 
@@ -40,10 +56,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL s_bounces;
 
 /// 分段标签标题是否平均分布, 默认 YES
-@property (nonatomic, assign) BOOL s_isEquivalent;
+@property (nonatomic, assign, getter=s_isEquivalent) BOOL s_equivalent;
 
 /// 是否显示底部分隔线, 默认 YES
-@property (nonatomic, assign) BOOL s_showSeparator;
+@property (nonatomic, assign, getter=s_isShowSeparator) BOOL s_showSeparator;
 
 /// 底部分隔线颜色, 默认 lightGrayColor
 @property (nonatomic, strong) UIColor *s_separatorColor;
@@ -75,14 +91,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark ---------------------------< indicator property (指示器属性) >---------------------------
 
-/// 指示器样式, 默认 GQHSegmentedViewIndicatorStyleDefault
-@property (nonatomic, assign) GQHSegmentedViewIndicatorStyle s_indicatorStyle;
+/// 指示器样式, 默认 SeedSegmentedIndicatorStyleDefault
+@property (nonatomic, assign) SeedSegmentedIndicatorStyle s_indicatorStyle;
 
-/// 指示器滚动样式, 默认 GQHSegmentedViewIndicatorScrollStyleDefault
-@property (nonatomic, assign) GQHSegmentedViewIndicatorScrollStyle s_indicatorScrollStyle;
+/// 指示器滚动样式, 默认 SeedSegmentedIndicatorScrollStyleDefault
+@property (nonatomic, assign) SeedSegmentedIndicatorScrollStyle s_indicatorScrollStyle;
 
 /// 是否显示指示器, 默认 YES
-@property (nonatomic, assign) BOOL s_showIndicator;
+@property (nonatomic, assign, getter=s_isShowIndicator) BOOL s_showIndicator;
 
 /// 指示器颜色, 默认 redColor
 @property (nonatomic, strong) UIColor *s_indicatorColor;
@@ -118,7 +134,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark ---------------------------< splitter property (分割符属性) >---------------------------
 
 /// 是否显示标题分割符, 默认 NO
-@property (nonatomic, assign) BOOL s_showSplitter;
+@property (nonatomic, assign, getter=s_isShowSplitter) BOOL s_showSplitter;
 
 /// 分割符颜色, 默认 redColor
 @property (nonatomic, strong) UIColor *s_splitterColor;

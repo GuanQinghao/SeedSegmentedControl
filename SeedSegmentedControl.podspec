@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SeedSegmentedControl'
-  s.version          = '1.0.2'
+  s.version          = '1.1.0'
   s.summary          = '分段标签控件'
   s.homepage         = 'https://github.com/GuanQinghao/SeedSegmentedControl'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

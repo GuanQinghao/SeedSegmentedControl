@@ -9,12 +9,16 @@
 
 
 /// 按钮图文样式
-typedef NS_ENUM(NSUInteger, SeedSegmentedTitleStyle) {
+typedef NS_ENUM(NSUInteger, SeedSegmentedTitleGraphicStyle) {
     
-    SeedSegmentedTitleStyleDefault, // 默认样式, 图片在左, 文字在右
-    SeedSegmentedTitleStyleRight, // 图片在右, 文字在左
-    SeedSegmentedTitleStyleTop, // 图片在上, 文字在下
-    SeedSegmentedTitleStyleBottom // 图片在下, 文字在上
+    /// 默认样式, 图片在左, 文字在右
+    SeedSegmentedTitleGraphicStyleLeft,
+    /// 图片在右, 文字在左
+    SeedSegmentedTitleGraphicStyleRight,
+    /// 图片在上, 文字在下
+    SeedSegmentedTitleGraphicStyleTop,
+    /// 图片在下, 文字在上
+    SeedSegmentedTitleGraphicStyleBottom
 };
 
 
@@ -26,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param style 图文样式
 /// @param spacing 图文间距
 /// @param operation 图文设置回调(回调中设置图片和文字)
-- (void)s_setTitleStyle:(SeedSegmentedTitleStyle)style spacing:(CGFloat)spacing withOperation:(void (^)(UIButton *button))operation;
+- (void)s_setTitleGraphicStyle:(SeedSegmentedTitleGraphicStyle)style spacing:(CGFloat)spacing withOperation:(void (^)(UIButton *button))operation;
 
 @end
 

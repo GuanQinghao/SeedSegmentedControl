@@ -1,5 +1,5 @@
 //
-//  GQHOneChildController.h
+//  SeedOneChildController.h
 //  SeedSegmentedControl
 //
 //  Created by Mac on 2020/4/20.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GQHOneChildController : UIViewController
+@interface SeedOneChildController : UIViewController
 
 @end
 

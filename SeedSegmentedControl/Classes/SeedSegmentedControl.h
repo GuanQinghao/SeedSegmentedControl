@@ -7,6 +7,7 @@
 //
 
 
-#import "GQHSegmentedTitleView.h"
-#import "GQHSegmentedContentView.h"
-#import "GQHSegmentedTitleViewConfigure.h"
+#import "SeedSegmentedTitleView.h"
+#import "SeedSegmentedTitleViewConfigure.h"
+
+#import "SeedSegmentedContentView.h"
