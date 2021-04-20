@@ -8,11 +8,11 @@
 #import <UIKit/UIKit.h>
 #import "UIButton+SeedSegmentedControl.h"
 #import "SeedSegmentedTitleViewConfigure.h"
-@class SeedSegmentedTitleView;
 
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class SeedSegmentedTitleView;
 @protocol SeedSegmentedTitleViewDelegate <NSObject>
 
 /// 分段标签选中标题按钮

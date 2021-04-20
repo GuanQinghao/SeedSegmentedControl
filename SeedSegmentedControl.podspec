@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'SeedSegmentedControl'
-    s.version          = '1.1.1'
+    s.version          = '1.1.2'
     s.summary          = '分段标签控件'
     s.homepage         = 'https://github.com/GuanQinghao/SeedSegmentedControl'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -24,10 +24,6 @@ Pod::Spec.new do |s|
     
     s.subspec 'SeedSegmentedContentView' do |ss|
         ss.source_files = 'SeedSegmentedControl/SeedSegmentedContentView/**/*'
-    end
-    
-    s.subspec 'SeedSegmentedCategory' do |ss|
-        ss.source_files = 'SeedSegmentedControl/SeedSegmentedCategory/**/*'
     end
     
 end
